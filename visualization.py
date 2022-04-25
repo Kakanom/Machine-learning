@@ -1,4 +1,5 @@
 """Модуль для визуализации данных"""
+
 from matplotlib import pyplot as plt
 import numpy as np
 
