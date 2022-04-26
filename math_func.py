@@ -2,6 +2,8 @@
 
 import numpy as np
 
+#Vectors and planes
+
 def DerivativeInDots(f, x : np.array, eps = 1e-10):
     """Возвращает примерное значение производных в точках, поданных в массиве x"""
     return (f(x + eps) - f(x)) / eps
@@ -21,7 +23,6 @@ def FindAngleBetweenPlanes(p1 : np.array, p2 : np.array):
         Возвращает угол между плоскостями."""
 
     return np.arccos(abs(p1 * p2) / ((p1 ** 2).sum() * (p2 ** 2).sum()))
-
 
 
 

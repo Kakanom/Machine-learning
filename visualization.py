@@ -11,5 +11,7 @@ def draw_poly_class(X, Y):
     plt.plot(x[:, 0], x[:, 1], 'o', label = str(i))
     plt.legend()
 
+
+
 if __name__=='__main__':
     print('Вызов',__name__)
