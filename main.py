@@ -1,12 +1,9 @@
-# Импортируем библиотеку самописных математических функций
+# Импортируем библиотеку самописных математических функций import libs
 from math_func import *
+from visualization import *
+from data_preprocessing import *
 import numpy as np
 
+draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -2, 2, 100, color = ["g", "y", "b"])
 
-
-
-# print(math_func.DerivativeInDots(lambda x: x ** 2, np.array(1)))
-
-print(LenOfVector(np.array([1, 2, 3])))
-
-print(FindAngleBetweenVectors(np.array([1, 0, 0]), np.array([1, 2, 3])))
+plt.show()
