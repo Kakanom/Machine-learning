@@ -1,6 +1,8 @@
 """Модуль для визуализации данных"""
 
 from matplotlib import pyplot as plt
+from matplotlib import animation as ani
+from IPython.display import HTML
 import numpy as np
 
 def draw_poly_class(X, Y):
@@ -18,8 +20,8 @@ def draw_poly_class(X, Y):
     plt.plot(x[:, 0], x[:, 1], 'o', label = str(i))
     plt.legend()
 
-def draw_funcs(f_str : list, x_start, x_end, x_num, color : list):
-    """Визуализация для данных функций.
+def draw_funcs(f_str : list, x_start : int, x_end : int, x_num : int, color : list):
+    """Визуализация для данных двумерных функций.
 
     На вход принимает:
         f_str - список функций в виде строк
@@ -47,7 +49,3 @@ def draw_funcs(f_str : list, x_start, x_end, x_num, color : list):
 if __name__=='__main__':
     print('Вызов',__name__)
 
-#Анимированные функции
-
-def get_animated_functions():
-    pass
