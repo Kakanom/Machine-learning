@@ -8,10 +8,13 @@ import numpy as np
 #
 # plt.show()
 
-def func(x):
-    return x ** 2
+# draw_funcs(['x', 'x ** 2', 'np.sin(x)', '1 / (1 + np.exp(-x))'], -2 * np.pi, 2 * np.pi, 10000)
+#
+# plt.show()
 
-print(func_segment(func, 1, 4, 4))
-print(np.linspace(1, 3, 1))
 
-# print(np.linspace.__doc__)
+print(func_segment(fib, 1, 46, 1))
+#
+# draw_poly_class(X, Y)
+#
+# plt.show()
