@@ -39,6 +39,7 @@ def fib(n):
     """Принимает на вход неотрицательное число n. Возвращает число Фибоначчи, стоящее на n - ном месте в ряду, используя
     формулу Бине
     """
+
     phi = ((1 + 5 ** 0.5) / 2)
 
     return round(((phi ** n) - ((-phi) ** -n)) / 5 ** 0.5)
@@ -70,6 +71,19 @@ def poly_equation(x: np.array):
     """
 
     return np.poly1d(x).roots
+
+
+def polinom(a: np.array, x: np.array):
+    """Принимает на вход два массива a, x.
+    a - коэффициенты многочлена.(левый элемент - нулевой, далее - первой степени и т.д.)
+    x - массив значений, в которых нужно посчитать многочлен.
+    """
+
+    x = np.array([x]).T
+    x = np.insert(np.cumprod(np.repeat(x, len(a) - 1, axis = 1), axis=1),
+            np.repeat(np.array([0]), len(x.T)), np.repeat(np.array([1]), len(x.T)),
+            axis=1)
+    return np.sum(x * a, axis = 1)
 
 
 if __name__ == '__main__':

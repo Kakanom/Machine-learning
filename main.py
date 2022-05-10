@@ -1,10 +1,11 @@
-# Импортируем библиотеку самописных математических функций import libs
 from math_func import *
 from visualization import *
 from data_preprocessing import *
+from metrics import *
+from models import LinReg
 import numpy as np
 
-# draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -10, 10, 100, color = ["g", "y", "b"])
+draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -10, 10, 100)
 #
 # plt.show()
 
@@ -12,9 +13,33 @@ import numpy as np
 #
 # plt.show()
 
-
-print(func_segment(fib, 1, 46, 1))
 #
 # draw_poly_class(X, Y)
 #
-# plt.show()
+
+x = np.array([np.arange(0.0, 6.0, 0.5),
+             np.arange(5.0, 6.11, 0.1)]).T
+y = np.array([ 7.32808219,  8.88210587,  8.92239811, 10.52462399, 12.91597313,
+            12.55843474, 14.81755614, 18.31825374, 19.44109095, 18.76040251,
+            20.07294082, 22.10215284])
+
+# print(x, y, sep="\n")
+
+mod = LinReg()
+
+mod.fit(x, y)
+
+print(mod.score(x, y))
+
+
+# x = np.array([np.arange(0.0, 6.0, 0.5),
+#              np.arange(5.0, 6.11, 0.1)])
+# x = np.insert(x, 0, 0, axis = 0).T
+# w = np.array([[1., 1., 1.]]).T
+#
+# print(x)
+# print(w)
+#
+# print(np.dot(x, w))
+
+print(polinom(np.array([1, 2, 3]), np.array([1, 2, 3])))
