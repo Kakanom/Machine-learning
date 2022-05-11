@@ -5,21 +5,44 @@ from matplotlib import pyplot as plt
 # from IPython.display import HTML
 import numpy as np
 
-
-def draw_poly_class(X, Y):
+def draw_poly_class(x: np.array, y: np.array):
     """Визуализая клатеризации по 2 признакам
 
     На вход принимает:
-        X - признаки
-        Y - метки классов
+        x - признаки
+        y - метки классов
 
     Рисует график с классификацией данных
     """
-    for i in range(len(np.unique(Y))):
-        x = X[Y == i]
 
-        plt.plot(x[:, 0], x[:, 1], 'o', label=str(i))
+    for i in range(len(np.unique(y))):
+        xi = x[y == i]
+
+        plt.plot(xi[:, 0], xi[:, 1], 'o', label=str(i))
     plt.legend()
+
+def draw_lin(x: np.array, y: np.array, w: np.array):
+    """Визуализая линейной регрессии по 2 признакам
+
+    На вход принимает:
+        x - признак(один, т.к. всего 2 веса)
+        y - значения
+        w - веса(длина = 2)
+
+    Рисует получившуюся линейную регрессии
+
+    Если длина массива весов не равна 2, то возвращается None
+    """
+
+    if len(w) != 2:
+        return None
+
+    def f(x):
+        return w[0] + w[1] * x
+
+    plt.plot(x, y, 'bo', x, f(x))
+
+    # plt.legend()
 
 
 def draw_funcs(f_str: list, x_start: int, x_end: int, x_num: int, color=None):

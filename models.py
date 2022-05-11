@@ -20,51 +20,52 @@ class FitError(Exception):
 
 
 class LinReg:
+    """Класс, реализующий линейную регрессию"""
 
-    def __init__(self, learning_rate=0.005, iter=200, eps=1e-10):
+    def __init__(self, learning_rate=0.005, iter=20000, eps=1e-10):
+        """
+        :param learning_rate: скорость обучения
+        :param iter: количество итерация обучения
+        :param eps: разница между значениями mse для остановки обучения
+        """
         self.lr = learning_rate
         self.iter = iter
+        self.eps = eps
         self.w = None
         self.log = None
-        self.eps = eps
 
     def fit(self, x: np.array, y: np.array):
+
         if x.shape[0] != y.shape[0]:
             raise ShapeError("У массивов разные размерности!")
 
         w = np.array([[1. for _ in range(len(x.T) + 1)]]).T
-
-        self.log = w.copy()
-
-        x = np.insert(x, 0, 0, axis=1)
+        x = np.insert(x, 0, 1, axis=1)
 
         yp = np.dot(x, w).sum(axis=1)
         mse = MSE(y, yp)
 
+        self.log = np.array([w.copy()])
+
         for i in range(self.iter):
 
-            # шаг для каждого из весов - здесь была ошибка
-
-            w[0] -= 2 * self.lr * np.sum(yp - y)/y.size
-            w[1:] -= np.array([2 * self.lr * ((yp - y) * x.T).sum(axis=1)[1:]]).T / y.size
+            w -= np.array([2 * self.lr * ((yp - y) * x.T).sum(axis=1)]).T / y.size
 
             yp_new = np.dot(x, w).sum(axis=1)
             mse_new = MSE(y, yp_new)
 
-            # Критерий остановки обучения - разница между значениями MSE меньше, чем 0.01
-            # Вычтем из старого значения MSE новое, полученное уже после обновления весов.
             if abs(mse - mse_new) < self.eps:
                 break
             yp = yp_new
             mse = mse_new
 
-            self.log = np.append(self.log, w)
+            self.log = np.append(self.log, np.array([w]), axis = 0)
 
         self.w = w
 
     def get_lin(self, x):
-        x = np.insert(x, 0, 0, axis=1)
-        return np.dot(x, self.w) + self.w[0]
+        x = np.insert(x, 0, 1, axis=1)
+        return np.dot(x, self.w)
 
     def predict(self, x):
         """Принимает на вход массив признаков.
