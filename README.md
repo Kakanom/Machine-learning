@@ -12,7 +12,7 @@
 4. Визуализации
 
 Пример работы программы:
-    ![example](https://github.com/Kakanom/task/blob/main/examle.png)
+    ![example](https://github.com/Kakanom/task/blob/main/example.png)
 
 Проект, скорее, будет полезен тем, кто только начинает знакомиться с машинным обучением,
 т.к. здесь нет каких-то сложных реализаций, нейронных сетей **(пока что)**.
