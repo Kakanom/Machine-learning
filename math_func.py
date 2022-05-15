@@ -80,10 +80,10 @@ def polinom(a: np.array, x: np.array):
     """
 
     x = np.array([x]).T
-    x = np.insert(np.cumprod(np.repeat(x, len(a) - 1, axis = 1), axis=1),
+    x = np.insert(np.cumprod(np.repeat(x, len(a) - 1, axis=1), axis=1),
             np.repeat(np.array([0]), len(x.T)), np.repeat(np.array([1]), len(x.T)),
             axis=1)
-    return np.sum(x * a, axis = 1)
+    return np.sum(x * a, axis=1)
 
 
 if __name__ == '__main__':

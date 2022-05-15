@@ -2,11 +2,12 @@
 from visualization import *
 from sklearn.metrics.pairwise import nan_euclidean_distances
 
+
 # linear regression
 
 
 def MSE(y, yp):
-    return np.sum((y-yp)**2)/y.size
+    return np.sum((y - yp) ** 2) / y.size
 
 
 class ShapeError(Exception):
@@ -35,9 +36,14 @@ class LinReg:
         self.log = None
 
     def fit(self, x: np.array, y: np.array):
+        """Обучает модель на данных
+
+        :param x: признаки объектов
+        :param y: целевой признак
+        """
 
         if x.shape[0] != y.shape[0]:
-            raise ShapeError("У массивов разные размерности!")
+            raise ShapeError("Arrays have different shapes!")
 
         w = np.array([[1. for _ in range(len(x.T) + 1)]]).T
         x = np.insert(x, 0, 1, axis=1)
@@ -59,17 +65,22 @@ class LinReg:
             yp = yp_new
             mse = mse_new
 
-            self.log = np.append(self.log, np.array([w]), axis = 0)
+            self.log = np.append(self.log, np.array([w]), axis=0)
 
         self.w = w
 
     def get_lin(self, x):
+        """Возвращает сумму матричного произведения x и вектора весов по объктам
+
+        :param x: признаки объектов
+        :return: сумма матричного произведения по объектам
+        """
         x = np.insert(x, 0, 1, axis=1)
         return np.dot(x, self.w)
 
     def predict(self, x):
-        """Принимает на вход массив признаков.
-        Возвращает предсказанные значения."""
+        """Принимает на вход массив признаков
+        Возвращает предсказанные значения"""
         if self.w is None:
             raise FitError("Model hasn't been fitted yet")
 
@@ -93,8 +104,8 @@ class Kmeans:
         self.max_iter = max_iter
         self.centroids = None
 
-
-    def find_labs(self, x, centroids):
+    @staticmethod
+    def find_labs(x, centroids):
         """классифицирует данные для текущих центроидов
 
         :param x: признаки объектов
@@ -102,22 +113,21 @@ class Kmeans:
         :return: метки классов для объектов
         """
         dist = nan_euclidean_distances(x, centroids)
-        return np.argmin(dist, axis = 1)
+        return np.argmin(dist, axis=1)
 
+    @staticmethod
+    def find_eucl_sum(x, point):
+        return nan_euclidean_distances(x, [point]).sum(axis=1)
 
-    def find_eucl_sum(self, x, point):
-        return nan_euclidean_distances(x, [point]).sum(axis = 1)
+    @staticmethod
+    def find_centroids(x, labs):
+        return np.array([x[labs == i].mean(axis=0) for i in np.unique(labs)])
 
-
-    def find_centroids(self, x, labs):
-      return np.array([x[labs == i].mean(axis = 0) for i in np.unique(labs)])
-
-
-    def find_closest_cluster(self, distance):
+    @staticmethod
+    def find_closest_cluster(distance):
         return np.argmin(distance, axis=1)
 
-
-    def clusterize(self, x, eps = 1e-3, tries = 100):
+    def clusterize(self, x, eps=1e-3, tries=100):
         """кластеризует данные на n кластеров.
 
         :param x: признаки объектов
