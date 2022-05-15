@@ -2,14 +2,19 @@ from models import *
 from sklearn.datasets import make_blobs
 import numpy as np
 
+# файл, использовавшийся для проверки работы функций/классов
+
 def draw_funcs_ex1():
     draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -10, 10, 100)
 
     plt.show()
+
+
 def draw_funcs_ex2():
     draw_funcs(['x', 'x ** 2', 'np.sin(x)', '1 / (1 + np.exp(-x))'], -2 * np.pi, 2 * np.pi, 10000)
 
     plt.show()
+
 
 def linreg_ex():
     x = np.array([np.arange(0.0, 6.0, 0.5)]).T
