@@ -1,9 +1,8 @@
 """Модуль для визуализации данных"""
 
 from matplotlib import pyplot as plt
-# from matplotlib import animation as ani
-# from IPython.display import HTML
 import numpy as np
+
 
 def draw_poly_class(x: np.array, y: np.array):
     """Визуализая клатеризации по 2 признакам
@@ -20,6 +19,7 @@ def draw_poly_class(x: np.array, y: np.array):
 
         plt.plot(xi[:, 0], xi[:, 1], 'o', label=str(i))
     plt.legend()
+
 
 def draw_lin(x: np.array, y: np.array, w: np.array):
     """Визуализая линейной регрессии по 2 признакам
@@ -41,8 +41,6 @@ def draw_lin(x: np.array, y: np.array, w: np.array):
         return w[0] + w[1] * x
 
     plt.plot(x, y, 'bo', x, f(x))
-
-    # plt.legend()
 
 
 def draw_funcs(f_str: list, x_start: int, x_end: int, x_num: int, color=None):

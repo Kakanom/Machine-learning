@@ -56,6 +56,6 @@
         pip install https://github.com/Kakanom/task.git
     ```
 
-Все нужные для работы проекта библиотеки лежат в файле requirements.
+Все нужные для работы проекта библиотеки лежат в файле [requirements](https://github.com/Kakanom/task.git/requirements).
 
 **Good luck**
