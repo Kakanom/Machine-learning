@@ -1,4 +1,4 @@
-from models import *
+from src.Kakanom.models import *
 from sklearn.datasets import make_blobs
 import numpy as np
 
@@ -30,7 +30,7 @@ def linreg_ex():
     plt.show()
 
 
-def kmeans_ex(n_centroids = 2):
+def kmeans_ex(n_centroids=2):
     X, labs = make_blobs(1000, centers=n_centroids)
 
     mod = Kmeans(n_clusters=n_centroids)
