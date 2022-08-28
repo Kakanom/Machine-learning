@@ -1,6 +1,7 @@
 """Модуль для математических функций"""
 
 import numpy as np
+import math
 
 # Vectors and planes
 
@@ -84,6 +85,17 @@ def polinom(a: np.array, x: np.array):
             np.repeat(np.array([0]), len(x.T)), np.repeat(np.array([1]), len(x.T)),
             axis=1)
     return np.sum(x * a, axis=1)
+
+# permutations etc
+
+
+def permutations(n, k):
+    """Возвращает перестановки из n по k"""
+    return math.factorial(n) / math.factorial(n - k)
+
+
+def C(n, k):
+    return math.factorial(n) / (math.factorial(n - k) * math.factorial(k))
 
 
 if __name__ == '__main__':
