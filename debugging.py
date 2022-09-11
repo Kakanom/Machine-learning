@@ -1,8 +1,11 @@
-from src.Kakanom.models import *
+from src.models import *
+from src.visualization import *
+from src.math_func import *
 from sklearn.datasets import make_blobs
-import numpy as np
 
 # файл, использовавшийся для проверки работы функций/классов
+
+
 
 def draw_funcs_ex1():
     draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -10, 10, 100)

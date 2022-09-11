@@ -26,13 +26,59 @@ def find_angle_between_planes(p1: np.array, p2: np.array):
     """"На вход принимает два массива вида: |xa yb zc ...|(константа опускается)
         Возвращает угол между плоскостями"""
 
-    return np.arccos(abs(p1 * p2) / ((p1 ** 2).sum() * (p2 ** 2).sum()))
+    return np.arccos(abs(p1 * p2) / ((p1 ** 2).sum() * (p2 ** 2).sum()))    
 
 
 def manh(x, y):
     """На вход получает два вектора x и y, возвращает число, соответствующее манхэттенскому расстоянию между ними."""
     return abs(x - y).sum(axis=0)
 
+
+# Number Theory
+
+def factorization(x):
+    """На вход получает натуральное число.
+    Возвращает два массива div и count - делители и их степени соответственно"""
+    divs = []
+    count = []
+
+    i = 2
+    while i * i <= x:
+        c = 0
+        while x % i == 0:
+            c += 1
+            x //= i
+        if c > 0:
+            divs.append(i)
+            count.append(c)
+        i += 1
+
+    if x > 1:
+        divs.append(x)
+        count.append(1)
+
+    return divs, count
+
+
+def phi(n):
+    """Принимает на вход натуральное число большее 2.
+    Возвращает количество взаимнопростых с n чисел из отрезка [1, n]"""
+    res = n
+    p = 2
+
+    while p * p <= n:
+        if n % p == 0:
+            res -= res//p
+
+        while n % p == 0:
+            n //= p
+
+        p += 1
+
+    if n > 1:
+        res -= res//n
+
+    return res
 
 # another functions
 
@@ -98,5 +144,3 @@ def C(n, k):
     return math.factorial(n) / (math.factorial(n - k) * math.factorial(k))
 
 
-if __name__ == '__main__':
-    print('Вызов', __name__)

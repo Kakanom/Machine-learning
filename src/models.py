@@ -184,6 +184,3 @@ class Kmeans:
 
         return S
 
-
-if __name__ == '__main__':
-    print('Вызов', __name__)

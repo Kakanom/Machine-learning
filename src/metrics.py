@@ -56,6 +56,3 @@ def F(y: np.array, yp: np.array):
 
     return 2 * pr * rec / (pr + rec)
 
-
-if __name__ == '__main__':
-    print('Вызов', __name__)

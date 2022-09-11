@@ -51,7 +51,3 @@ def fill_nan(x):
         s = np.nansum(x[mask, j] / (m[i, mask]))
         x[i, j] = s / z
     return x
-
-
-if __name__ == '__main__':
-    print('Вызов', __name__)

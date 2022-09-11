@@ -73,7 +73,3 @@ def draw_funcs(f_str: list, x_start: int, x_end: int, x_num: int, color=None):
 
     eval(plot_str)
     plt.legend(f_str)
-
-
-if __name__ == '__main__':
-    print('Вызов', __name__)
