@@ -1,5 +1,5 @@
 """Модуль, содержащий в себе некоторые модели машинного обучения"""
-from src.Kakanom.visualization import *
+from src.visualization import *
 from sklearn.metrics.pairwise import nan_euclidean_distances
 
 

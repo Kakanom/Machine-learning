@@ -82,6 +82,20 @@ def phi(n):
 
 # another functions
 
+def bin_pow(x, n):
+    """Принимает на вход числа x и n.
+    Возвращает x^n(быстрый алгоритм)"""
+    res = 1
+    while n:
+        if n & 1:
+            res *= x
+            n -=1
+        else:
+            x *= x
+            n >>= 1
+
+    return res
+
 def fib(n):
     """Принимает на вход неотрицательное число n. Возвращает число Фибоначчи, стоящее на n - ном месте в ряду, используя
     формулу Бине
@@ -142,5 +156,3 @@ def permutations(n, k):
 
 def C(n, k):
     return math.factorial(n) / (math.factorial(n - k) * math.factorial(k))
-
-

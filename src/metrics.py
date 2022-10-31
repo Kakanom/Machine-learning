@@ -55,4 +55,3 @@ def F(y: np.array, yp: np.array):
     rec = recall(y, yp)
 
     return 2 * pr * rec / (pr + rec)
-

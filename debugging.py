@@ -6,7 +6,6 @@ from sklearn.datasets import make_blobs
 # файл, использовавшийся для проверки работы функций/классов
 
 
-
 def draw_funcs_ex1():
     draw_funcs(["x", "x ** 2", "x ** 3 + 2"], -10, 10, 100)
 
@@ -41,3 +40,4 @@ def kmeans_ex(n_centroids=2):
 
     draw_poly_class(X, lab)
     plt.show()
+
