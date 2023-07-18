@@ -1,5 +1,4 @@
 # merge sort
-
 def merge(a, b):
     i, j = 0, 0
     c = []

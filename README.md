@@ -53,4 +53,6 @@
 
 Все нужные для работы проекта библиотеки лежат в файле [requirements](https://github.com/Kakanom/task.git/requirements).
 
+Скачать можно так: **pip install git+https://github.com/Kakanom/Kakan**
+
 **Good luck**
