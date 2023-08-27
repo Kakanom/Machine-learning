@@ -9,7 +9,7 @@ setup(
     email='frostikoil@gmail.com',
     author='Kakanom',
     requires_python='>=3.6.0',
-    version='1.1.2',
+    version='1.1.3',
     install_requires=['numpy>=1.20.3',
                       'matplotlib>=3.4.3',
                       'pandas>=1.3.4',

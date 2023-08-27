@@ -6,6 +6,7 @@ from sklearn.datasets import make_blobs
 
 from src.algorithms.sorts import *
 from src.tools.wrappers import *
+from src.data_structures.priority_queues import *
 
 
 # файл, использовавшийся для проверки работы функций/классов
@@ -46,8 +47,3 @@ def kmeans_ex(n_centroids=2):
     draw_poly_class(X, lab)
     plt.show()
 
-@timer
-def f(x):
-    return x
-
-f(1)
