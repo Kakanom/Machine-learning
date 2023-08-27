@@ -23,3 +23,21 @@ def merge_sort(arr):
     r = merge_sort(arr[n//2:])
 
     return merge(l, r)
+
+
+# quick sort
+
+def quick_sort(arr):
+    if len(arr) < 2:
+        return arr
+
+    base = arr[0]
+    a, b = [], []
+
+    for i in range(1, len(arr)):
+        if arr[i] < base:
+            a.append(arr[i])
+        else:
+            b.append(arr[i])
+
+    return quick_sort(a) + [base] + quick_sort(b)
