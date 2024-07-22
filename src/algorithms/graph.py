@@ -16,11 +16,6 @@ class MinHeap:
 
             ind >>= 1
 
-    def insert(self, node):
-        self.heap.append(node)
-        self.size = self.size + 1
-        self.siftup(self.size)
-
     def siftdown(self, ind):
         while (ind << 1) <= self.size:
             mc = self.min_child(ind)
@@ -28,6 +23,11 @@ class MinHeap:
                 self.heap[ind], self.heap[mc] = self.heap[mc], self.heap[ind]
 
             ind = mc
+
+    def insert(self, node):
+        self.heap.append(node)
+        self.size = self.size + 1
+        self.siftup(self.size)
 
     def min_child(self, ind):
         if (ind << 1) >= self.size:

@@ -47,3 +47,12 @@ def kmeans_ex(n_centroids=2):
     draw_poly_class(X, lab)
     plt.show()
 
+
+arr = [1 for i in range(100000)] + [2 for i in range(100000)] + [3 for i in range(100000)]
+timer()(quick_sort)(arr)
+timer()(merge_sort)(arr)
+
+# tree = SegmentTree(list(map(int, input().split())))
+#
+# print(tree.query(0, 3))
+# print(*tree.tree)

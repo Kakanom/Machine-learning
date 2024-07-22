@@ -156,3 +156,20 @@ def permutations(n, k):
 
 def C(n, k):
     return math.factorial(n) / (math.factorial(n - k) * math.factorial(k))
+
+
+def eratosthenes_sieve(self, n: int) -> int:
+    """returns number of prime numbers from 0 to n - 1"""
+    if n < 3:
+        return 0
+
+    sieve = [False, False] + [True] * (n - 2)
+
+    for i in range(2, int(math.sqrt(n) + 1)):
+        if sieve[i]:
+            for j in range(i * i, n, i):
+                sieve[j] = False
+
+    return sieve.count(True)
+
+
